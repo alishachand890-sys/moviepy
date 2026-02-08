@@ -1,0 +1,65 @@
+from moviepy.editor import *
+
+# ==============================
+# LOAD BASE VIDEO
+# ==============================
+base = VideoFileClip("VID_20260208_092105_907.mp4").resize((1080, 1920))
+
+# ==============================
+# TEXT OVERLAYS (SEQUENCE)
+# ==============================
+
+t1 = TextClip(
+    "Happy Birthday ❤️",
+    fontsize=80,
+    color="white",
+    font="Amiri-Bold"
+).set_position("center").set_start(0).set_duration(4).fadein(1).fadeout(1)
+
+t2 = TextClip(
+    "To my favourite person 🥰",
+    fontsize=60,
+    color="white",
+    font="Amiri-Bold"
+).set_position(("center", 820)).set_start(4).set_duration(5).fadein(1).fadeout(1)
+
+t3 = TextClip(
+    "You make my world brighter ✨",
+    fontsize=60,
+    color="white",
+    font="Amiri-Bold"
+).set_position(("center", 880)).set_start(9).set_duration(5).fadein(1).fadeout(1)
+
+t4 = TextClip(
+    "Forever grateful for you 💖",
+    fontsize=60,
+    color="white",
+    font="Amiri-Bold"
+).set_position(("center", 940)).set_start(14).set_duration(4).fadein(1).fadeout(1)
+
+t5 = TextClip(
+    "I love you… always ♾️",
+    fontsize=70,
+    color="white",
+    font="Amiri-Bold"
+).set_position("center").set_start(18).set_duration(3).fadein(1)
+
+# ==============================
+# FINAL COMPOSITION
+# ==============================
+
+final = CompositeVideoClip(
+    [base, t1, t2, t3, t4, t5],
+    size=(1080, 1920)
+).set_duration(21.14)
+
+# ==============================
+# EXPORT FINAL OUTPUT VIDEO
+# ==============================
+
+final.write_videofile(
+    "final_birthday_output.mp4",
+    fps=24,
+    codec="libx264",
+    audio_codec="aac"
+)
